@@ -15,7 +15,7 @@ using namespace std;
 
 enum Specialnist { KOMPUTERNI_NAUKY, INFORMATYKA, MATEMATYKA_TA_EKONOMIKA, FIZYKA_TA_INFORMATYKA, TRUDOVE_NAVCHANYA };
 
-string specialnistStr[] = { "Комп'ют. науки", "Інформатика", "Матем. та економ.", "Фіз. та інфо.", "Труд. навчання" };
+string specialnistStr[] = { "КН", "ІН", "МЕ", "ФІ", "ТН" };
 
 struct Student
 {
@@ -122,51 +122,51 @@ void Create(Student* p, const int N)
 void Print(Student* p, const int N)
 {
 	cout << "======================================================================================================================"
-		<< endl;
+		 << endl;
 	cout << "|  №  |   Прізвище   | Курс |   Спеціальність   | Фізика | Математика | Програмування | Чисельні методи | Педагогіка | "
-		<< endl;
+		 << endl;
 	cout << "----------------------------------------------------------------------------------------------------------------------"
-		<< endl;
+		 << endl;
 
 	for (int i = 0; i < N; i++)
 	{
 		cout << "| " << setw(3) << right << i + 1 << " ";
-		cout << "| " << setw(13) << left << p[i].prizv
-			<< "| " << setw(4) << right << p[i].kurs << " "
-			<< "| " << setw(11) << left << specialnistStr[p[i].specialnist];
+		cout << "| " << setw(12) << right << p[i].prizv << " "
+			 << "| " << setw(4) << right << p[i].kurs << " "
+			 << "| " << setw(17) << right << specialnistStr[p[i].specialnist];
 
 		switch (p[i].specialnist)
 		{
 		case KOMPUTERNI_NAUKY:
 			cout << " |" << setw(7) << right
-				<< p[i].fizyka << right;
+				 << p[i].fizyka << right;
 			cout << " | " << setw(10) << right
-				<< p[i].matematika << right;
+				 << p[i].matematika << right;
 			cout << " | " << setw(13) << right
-				<< p[i].programming << " |" << right << endl;
+				 << p[i].programming << " |" << right << endl;
 			break;
 		case INFORMATYKA:
-			cout << " " << setw(7) << right << "|" << setw(7) << right
-				<< p[i].fizyka << right;
+			cout << " |" << setw(7) << right
+				 << p[i].fizyka << right;
 			cout << " | " << setw(10) << right
-				<< p[i].matematika << right;
+				 << p[i].matematika << right;
 			cout << " | " << setw(15) << right << "|" << setw(16) << right
-				<< p[i].chiselni_metody << " |" << right << endl;
+				 << p[i].chiselni_metody << " |" << right << endl;
 			break;
 		case MATEMATYKA_TA_EKONOMIKA:
 		case FIZYKA_TA_INFORMATYKA:
 		case TRUDOVE_NAVCHANYA:
-			cout << "  |" << setw(7) << right
-				<< p[i].fizyka << right;
+			cout << " |" << setw(7) << right
+				 << p[i].fizyka << right;
 			cout << " | " << setw(10) << right
-				<< p[i].matematika << right;
+				 << p[i].matematika << right;
 			cout << " | " << setw(15) << right << "|" << setw(18) << right << "|" << setw(11) << right
-				<< p[i].pedagogika << " |" << right << endl;
+				 << p[i].pedagogika << " |" << right << endl;
 			break;
 		}
 	}
 	cout << "======================================================================================================================"
-		<< endl;
+		 << endl;
 	cout << endl;
 }
 
@@ -174,6 +174,14 @@ void Print(Student* p, const int N)
 int Average(Student* p, const int N)
 {
 	cout << "Середній бал для кожного студента:" << endl;
+
+	cout << "======================================="
+		 << endl;
+	cout << "|  №  |   Прізвище   |  Середній бал  |"
+		 << endl;
+	cout << "---------------------------------------"
+		 << endl;
+
 	int aver = 0, minaver = 0, k = 0;
 	for (int i = 0; i < N; i++)
 	{
@@ -183,19 +191,17 @@ int Average(Student* p, const int N)
 			k++;
 
 			aver = round(p[i].fizyka + p[i].matematika + p[i].programming) / 3;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Фізика = " << p[i].fizyka << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Математика = " << p[i].matematika << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Програмування = " << p[i].programming << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Середній бал = " << aver << endl;
+
+			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
+				 << setw(14) << aver << " |" << right << endl;
 			break;
 		case INFORMATYKA:
 			k++;
 
 			aver = round(p[i].fizyka + p[i].matematika + p[i].chiselni_metody) / 3;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Фізика = " << p[i].fizyka << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Математика = " << p[i].matematika << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Чисельні методи = " << p[i].chiselni_metody << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Середній бал = " << aver << endl;
+
+			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
+				 << setw(14) << aver << " |" << right << endl;
 			break;
 		case MATEMATYKA_TA_EKONOMIKA:
 		case FIZYKA_TA_INFORMATYKA:
@@ -203,13 +209,14 @@ int Average(Student* p, const int N)
 			k++;
 
 			aver = round(p[i].fizyka + p[i].matematika + p[i].pedagogika) / 3;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Фізика = " << p[i].fizyka << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Математика = " << p[i].matematika << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Педагогіка = " << p[i].pedagogika << endl;
-			cout << setw(3) << right << k << " " << p[i].prizv << " Середній бал = " << aver << endl;
+
+			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
+				 << setw(14) << aver << " |" << right << endl;
 			break;
 		}
 	}
+	cout << "=======================================" << endl;
+	cout << endl;
 
 	return minaver;
 }
