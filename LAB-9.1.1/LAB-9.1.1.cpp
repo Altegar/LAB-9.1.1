@@ -121,11 +121,11 @@ void Create(Student* p, const int N)
 
 void Print(Student* p, const int N)
 {
-	cout << "======================================================================================================================"
+	cout << "=================================================================================================================="
 		 << endl;
-	cout << "|  №  |   Прізвище   | Курс |   Спеціальність   | Фізика | Математика | Програмування | Чисельні методи | Педагогіка | "
+	cout << "|  №  |   Прізвище   | Курс | Спеціальність | Фізика | Математика | Програмування | Чисельні методи | Педагогіка |"
 		 << endl;
-	cout << "----------------------------------------------------------------------------------------------------------------------"
+	cout << "------------------------------------------------------------------------------------------------------------------"
 		 << endl;
 
 	for (int i = 0; i < N; i++)
@@ -133,7 +133,7 @@ void Print(Student* p, const int N)
 		cout << "| " << setw(3) << right << i + 1 << " ";
 		cout << "| " << setw(12) << right << p[i].prizv << " "
 			 << "| " << setw(4) << right << p[i].kurs << " "
-			 << "| " << setw(17) << right << specialnistStr[p[i].specialnist];
+			 << "| " << setw(13) << right << specialnistStr[p[i].specialnist];
 
 		switch (p[i].specialnist)
 		{
@@ -165,7 +165,7 @@ void Print(Student* p, const int N)
 			break;
 		}
 	}
-	cout << "======================================================================================================================"
+	cout << "=================================================================================================================="
 		 << endl;
 	cout << endl;
 }
@@ -175,11 +175,11 @@ int Average(Student* p, const int N)
 {
 	cout << "Середній бал для кожного студента:" << endl;
 
-	cout << "======================================="
+	cout << "====================================="
 		 << endl;
-	cout << "|  №  |   Прізвище   |  Середній бал  |"
+	cout << "|  №  |   Прізвище   | Середній бал |"
 		 << endl;
-	cout << "---------------------------------------"
+	cout << "-------------------------------------"
 		 << endl;
 
 	int aver = 0, minaver = 0, k = 0;
@@ -193,7 +193,7 @@ int Average(Student* p, const int N)
 			aver = round(p[i].fizyka + p[i].matematika + p[i].programming) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
-				 << setw(14) << aver << " |" << right << endl;
+				 << setw(12) << aver << " |" << right << endl;
 			break;
 		case INFORMATYKA:
 			k++;
@@ -201,7 +201,7 @@ int Average(Student* p, const int N)
 			aver = round(p[i].fizyka + p[i].matematika + p[i].chiselni_metody) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
-				 << setw(14) << aver << " |" << right << endl;
+				 << setw(12) << aver << " |" << right << endl;
 			break;
 		case MATEMATYKA_TA_EKONOMIKA:
 		case FIZYKA_TA_INFORMATYKA:
@@ -211,11 +211,11 @@ int Average(Student* p, const int N)
 			aver = round(p[i].fizyka + p[i].matematika + p[i].pedagogika) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
-				 << setw(14) << aver << " |" << right << endl;
+				 << setw(12) << aver << " |" << right << endl;
 			break;
 		}
 	}
-	cout << "=======================================" << endl;
+	cout << "=====================================" << endl;
 	cout << endl;
 
 	return minaver;
