@@ -8,7 +8,6 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <cmath>
 #include <Windows.h> // забезпечення відображення кирилиці
 
 using namespace std;
@@ -34,7 +33,7 @@ struct Student
 
 void Create(Student* p, const int N);
 void Print(Student* p, const int N);
-int Average(Student* p, const int N);
+double Average(Student* p, const int N);
 
 int main()
 {
@@ -171,7 +170,7 @@ void Print(Student* p, const int N)
 }
 
 // Програма готова неповністю, тому що вона не шукає найменший середній бал
-int Average(Student* p, const int N)
+double Average(Student* p, const int N)
 {
 	cout << "Середній бал для кожного студента:" << endl;
 
@@ -190,7 +189,7 @@ int Average(Student* p, const int N)
 		case KOMPUTERNI_NAUKY:
 			k++;
 
-			aver = round(p[i].fizyka + p[i].matematika + p[i].programming) / 3;
+			aver = (p[i].fizyka + p[i].matematika + p[i].programming) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
 				 << setw(12) << aver << " |" << right << endl;
@@ -198,7 +197,7 @@ int Average(Student* p, const int N)
 		case INFORMATYKA:
 			k++;
 
-			aver = round(p[i].fizyka + p[i].matematika + p[i].chiselni_metody) / 3;
+			aver = (p[i].fizyka + p[i].matematika + p[i].chiselni_metody) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
 				 << setw(12) << aver << " |" << right << endl;
@@ -208,7 +207,7 @@ int Average(Student* p, const int N)
 		case TRUDOVE_NAVCHANYA:
 			k++;
 
-			aver = round(p[i].fizyka + p[i].matematika + p[i].pedagogika) / 3;
+			aver = (p[i].fizyka + p[i].matematika + p[i].pedagogika) / 3;
 
 			cout << "| " << setw(3) << right << k << " | " << setw(12) << right << p[i].prizv << " | "
 				 << setw(12) << aver << " |" << right << endl;
